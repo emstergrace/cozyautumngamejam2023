@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private float MovementSpeed = 5f;
     private Vector3 FacingDirection = Vector3.down;
     private Vector3 MovementDirection = Vector3.zero;
+    
+    private int LayerToRaycast;
     private Rigidbody2D _rb;
 
     private void Start()
@@ -27,8 +29,7 @@ public class PlayerController : MonoBehaviour
         Input = new FrameInput
         {
             Y = UnityEngine.Input.GetAxisRaw("Vertical"),
-            X = UnityEngine.Input.GetAxisRaw("Horizontal"),
-            Interact = UnityEngine.Input.GetKey(KeyCode.E)
+            X = UnityEngine.Input.GetAxisRaw("Horizontal")
         };
     }
 
@@ -54,10 +55,5 @@ public class PlayerController : MonoBehaviour
         MovementDirection = characterMovementDirection;
 
         _rb.velocity = MovementDirection * MovementSpeed;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
     }
 }
