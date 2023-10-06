@@ -56,7 +56,6 @@ public class Interactor : MonoBehaviour
             if (interatableComponent != null)
             {
                 var item = interatableComponent.Use();
-
                 _inventory.Add(item);
             }
         }
