@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
             FacingDirection = characterMovementDirection;
         }
 
-        MovementDirection = characterMovementDirection;
+        MovementDirection = characterMovementDirection.normalized;
 
         _rb.velocity = MovementDirection * MovementSpeed;
     }
