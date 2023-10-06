@@ -1215,10 +1215,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 61660730411292146, guid: fb5fdf70d5162b24089c6da0be34cf99, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1857901277366799732, guid: fb5fdf70d5162b24089c6da0be34cf99, type: 3}
       propertyPath: m_Name
       value: chicken_brown animation_17
