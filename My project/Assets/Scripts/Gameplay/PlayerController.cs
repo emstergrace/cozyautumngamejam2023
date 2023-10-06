@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (characterMovementDirection != Vector3.zero) {
-            FacingDirection = characterMovementDirection;
+            FacingDirection = characterMovementDirection.normalized;
         }
 
         MovementDirection = characterMovementDirection.normalized;
