@@ -7,12 +7,12 @@ using static UnityEditor.Progress;
 
 public class Interactor : MonoBehaviour
 {
-    private FrameInput Input;
+    private Inventory _inventory;
     private GameObject CurrentInteactable;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _inventory = new Inventory();
     }
 
     // Update is called once per frame
@@ -25,7 +25,8 @@ public class Interactor : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Interactable>() != null)
+        if (collision.gameObject.GetComponent<Interactable>() != null
+            || collision.gameObject.GetComponent<Consumable>() != null)
         {
             CurrentInteactable = collision.gameObject;
         } 
@@ -48,14 +49,15 @@ public class Interactor : MonoBehaviour
 
             if (consumableComponent != null)
             {
-                Debug.Log("Consume");
-                consumableComponent.Consume();
+                var item = consumableComponent.Consume();
+                _inventory.Add(item);
             }
 
             if (interatableComponent != null)
             {
                 var item = interatableComponent.Use();
-                Debug.Log("Interact " + item);
+
+                _inventory.Add(item);
             }
         }
     }

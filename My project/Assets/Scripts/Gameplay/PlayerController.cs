@@ -9,12 +9,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 FacingDirection = Vector3.down;
     private Vector3 MovementDirection = Vector3.zero;
     
-    private int LayerToRaycast;
+    
     private Rigidbody2D _rb;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
