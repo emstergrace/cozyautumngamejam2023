@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private float MovementSpeed = 5f;
     private Vector3 FacingDirection = Vector3.down;
     private Vector3 MovementDirection = Vector3.zero;
+
+    private Animator animator;
     
     
     private Rigidbody2D _rb;
@@ -15,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         
     }
 
@@ -37,6 +40,13 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         var characterMovementDirection = Vector3.zero;
+
+        if (Input.X != 0 || Input.Y != 0)
+        {
+            animator.SetFloat("XInput", Input.X);
+            animator.SetFloat("YInput", Input.Y);
+        }
+
         if (Input.X > 0)
         {
             characterMovementDirection += Vector3.right;
@@ -46,10 +56,26 @@ public class PlayerController : MonoBehaviour
             characterMovementDirection += Vector3.left;
         }
 
-        if (Input.Y > 0) { characterMovementDirection += Vector3.up; }
-        else if (Input.Y < 0) { characterMovementDirection += Vector3.down; }
+        if (Input.Y > 0) 
+        {
+            characterMovementDirection += Vector3.up; 
+        }
+        else if (Input.Y < 0) 
+        {
+            characterMovementDirection += Vector3.down; 
+        }
 
-        if(characterMovementDirection != Vector3.zero) {
+        // animation stuff
+        if (Input.Y == 0 && Input.X == 0)
+        {
+            animator.SetBool("IsWalking", false);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", true);
+        }
+
+        if (characterMovementDirection != Vector3.zero) {
             FacingDirection = characterMovementDirection;
         }
 
