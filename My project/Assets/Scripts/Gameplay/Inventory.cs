@@ -4,7 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Inventory
+public class Inventory : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI milkText, sugarText, flourText, fruitText, eggsText;
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
